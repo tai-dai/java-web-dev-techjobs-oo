@@ -19,7 +19,7 @@ public class Job {
     // DONE!!!
 
     public Job(){
-        this.id =nextId;
+        this.id = nextId;
         nextId++;
     }
 
@@ -49,6 +49,38 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString(){
+        Object[] props = {this.name, this.employer, this.location, this.positionType, this.coreCompetency};
+        String[] results = new String[5];
+
+        int i = -1;
+        int sumNulls = 0;
+
+        for (Object object : props){
+            i++;
+            if (object == null){
+                results[i] = "Data not available";
+                sumNulls ++;
+            } else {
+                results[i] = object.toString();
+            }
+        }
+
+        if (sumNulls == 5){
+            return "\nOOPS! This job does not seem to exist.\n";
+
+        } else {
+            return "\n" +
+                    "ID: " + this.id + "\n" +
+                    "Name: " + results[0] + "\n" +
+                    "Employer: " + results[1] + "\n" +
+                    "Location: " + results[2] + "\n" +
+                    "Position Type: " + results[3] +"\n" +
+                    "Core Competency: " + results[4] + "\n" +
+                    "\n";
+        }
+    };
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
