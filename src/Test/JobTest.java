@@ -64,7 +64,6 @@ public class JobTest {
         assertTrue(jobathan.toString().contains("Location: Desert\n"));
         assertTrue(jobathan.toString().contains("Position Type: Quality control\n"));
         assertTrue(jobathan.toString().contains("Core Competency: Persistence\n"));
-//        assertEquals(jobathan.toString(), "\nID: 15\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n\n");
     }
     
     @Test
