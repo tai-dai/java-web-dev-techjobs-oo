@@ -51,7 +51,7 @@ public class Job {
 
     @Override
     public String toString(){
-        Object[] props = {this.name, this.employer, this.location, this.positionType, this.coreCompetency};
+        Object[] props = {this.name, this.employer.getValue(), this.location.getValue(), this.positionType.getValue(), this.coreCompetency.getValue()};
         String[] results = new String[5];
 
         int i = -1;
@@ -59,11 +59,12 @@ public class Job {
 
         for (Object object : props){
             i++;
-            if (object == null){
+            String strObject = object.toString();
+            if (strObject == ""){
                 results[i] = "Data not available";
                 sumNulls ++;
             } else {
-                results[i] = object.toString();
+                results[i] = strObject;
             }
         }
 

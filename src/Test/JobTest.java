@@ -10,11 +10,15 @@ public class JobTest {
     Job jobbie;
     Job jobbert;
     Job jobathan;
+    Job jobathan2;
+    Job jobathan3;
 
     @Before public void initialize() {
         jobbie = new Job(){};
         jobbert = new Job(){};
         jobathan = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence")){};
+        jobathan2 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence")){};
+        jobathan3 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency("")){};
     }
 
     @Test
@@ -57,23 +61,24 @@ public class JobTest {
     }
 
     @Test
-    public void testToStringLabelsAndFields(){
-        assertTrue(jobathan.toString().contains("ID: 15\n"));
-        assertTrue(jobathan.toString().contains("Name: Product tester\n"));
-        assertTrue(jobathan.toString().contains("Employer: ACME\n"));
-        assertTrue(jobathan.toString().contains("Location: Desert\n"));
-        assertTrue(jobathan.toString().contains("Position Type: Quality control\n"));
-        assertTrue(jobathan.toString().contains("Core Competency: Persistence\n"));
+        public void testToStringLabelsAndFields(){
+        assertEquals(jobathan.toString(),
+//                "\nID: 23\n" +
+                        "\nID: " + jobathan.getId() + "\n" +
+                        "Name: Product tester\n" +
+                        "Employer: ACME\n" +
+                        "Location: Desert\n" +
+                        "Position Type: Quality control\n" +
+                        "Core Competency: Persistence\n\n");
     }
     
     @Test
     public void testToStringEmptyField(){
-        jobathan.setEmployer(null);
-        assertTrue(jobathan.toString().contains("Employer: Data not available"));
+        assertTrue(jobathan2.toString().contains("Employer: Data not available"));
     }
 
     @Test
     public void testToStringIdOnly(){
-        assertEquals(jobbie.toString(), "\nOOPS! This job does not seem to exist.\n");
+        assertEquals(jobathan3.toString(), "\nOOPS! This job does not seem to exist.\n");
     }
 }
